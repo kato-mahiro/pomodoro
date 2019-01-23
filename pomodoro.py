@@ -44,7 +44,7 @@ def pomodoro(times):
             break
 
         bell()
-        input('Are you ready?? Press any key')
+        input('Have you done?? Press any key')
         print ('5 min break time...')
         for count in range(5):
             time.sleep(BREAK_TIME * 60 / 5)
