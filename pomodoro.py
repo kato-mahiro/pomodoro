@@ -1,7 +1,7 @@
 #coding:utf-8
 
-WORK_TIME = 25
-BREAK_TIME = 5
+WORK_TIME = 1
+BREAK_TIME = 1
 
 import sys
 import time
@@ -19,8 +19,14 @@ def get_attention():
         print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!','\a')
         time.sleep(0.3)
 
+def countdown(times=3):
+    for i in range(times):
+        print(times-i)
+        time.sleep(1)
+    print("Let's start!!")
+
 def bell():
-    filename = '/Users/katomasahiro/pomodoro/bell.mp3'
+    filename = 'bell.mp3'
     pygame.mixer.init()
     pygame.mixer.music.load(filename)
     mp3_length = mp3(filename).info.length
@@ -28,11 +34,20 @@ def bell():
     time.sleep(mp3_length + 0.25)
     pygame.mixer.music.stop()
 
+def message_window(string):
+    n = len(string)
+    print('=' * n)
+    print(string)
+    print('=' * n)
+        
+
 def pomodoro(times):
     bell()
     done = 0
     while(True):
-        input('Are you ready?? Press any key')
+        message_window('Are you ready?? Press any key')
+        hoge = input()
+        countdown()
         print ('Focus on your task',done+1, '/', times,'...')
         for count in range(5):
             time.sleep(WORK_TIME * 60 / 5)
@@ -41,12 +56,13 @@ def pomodoro(times):
 
         if times == done:
             bell()
-            print("You've done!")
+            message_window('You have done!!')
             break
 
         bell()
-        input('Have you done?? Press any key')
-        print ('5 min break time...')
+        message_window('Have you done?? Press any key')
+        hoge = input()
+        print (BREAK_TIME,' min break time...')
         for count in range(5):
             time.sleep(BREAK_TIME * 60 / 5)
             print(emoji.emojize(':zzz:',use_aliases=True)*(count+1))
