@@ -1,7 +1,7 @@
 #coding:utf-8
 
-WORK_TIME = 1
-BREAK_TIME = 1
+WORK_TIME = 25
+BREAK_TIME = 5
 
 import sys
 import time
