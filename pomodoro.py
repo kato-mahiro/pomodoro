@@ -31,7 +31,7 @@ def bell():
 def pomodoro(times):
     done = 0
     while(True):
-        bell()
+        input('Are you ready?? Press any key')
         print ('Focus on your task',done+1, '/', times,'...')
         for count in range(5):
             time.sleep(WORK_TIME * 60 / 5)
@@ -44,10 +44,12 @@ def pomodoro(times):
             break
 
         bell()
+        input('Have you done?? Press any key')
         print ('5 min break time...')
         for count in range(5):
             time.sleep(BREAK_TIME * 60 / 5)
             print(emoji.emojize(':zzz:',use_aliases=True)*(count+1))
+        bell()
 
 if __name__ == '__main__':
     try:
