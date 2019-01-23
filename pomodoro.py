@@ -20,7 +20,7 @@ def get_attention():
         time.sleep(0.3)
 
 def bell():
-    filename = 'bell.mp3'
+    filename = 'User/katomasahiro/pomodoro/bell.mp3'
     pygame.mixer.init()
     pygame.mixer.music.load(filename)
     mp3_length = mp3(filename).info.length
