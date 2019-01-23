@@ -20,7 +20,7 @@ def pomodoro(times):
         get_attention()
         print ('Focus on your task',done+1, '/', times,'...')
         for count in range(5):
-            time.sleep(10)
+            time.sleep(300)
             print(emoji.emojize(':tomato:',use_aliases=True),'\a')
         done += 1
 
@@ -32,7 +32,7 @@ def pomodoro(times):
         get_attention()
         print ('5 min break time...')
         for count in range(5):
-            time.sleep(10)
+            time.sleep(60)
             print(emoji.emojize(':zzz:',use_aliases=True),'\a')
 
 if __name__ == '__main__':
