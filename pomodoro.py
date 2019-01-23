@@ -1,8 +1,13 @@
 #coding:utf-8
 
+WORK_TIME = 25
+BREAK_TIME = 5
+
 import sys
 import time
 import emoji
+from mutagen.mp3 import MP3 as mp3
+import pygame
 
 args = sys.argv
 
@@ -14,26 +19,35 @@ def get_attention():
         print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!','\a')
         time.sleep(0.3)
 
+def bell():
+    filename = 'bell.mp3'
+    pygame.mixer.init()
+    pygame.mixer.music.load(filename)
+    mp3_length = mp3(filename).info.length
+    pygame.mixer.music.play(1)
+    time.sleep(mp3_length + 0.25)
+    pygame.mixer.music.stop()
+
 def pomodoro(times):
     done = 0
     while(True):
-        get_attention()
+        bell()
         print ('Focus on your task',done+1, '/', times,'...')
         for count in range(5):
-            time.sleep(300)
-            print(emoji.emojize(':tomato:',use_aliases=True),'\a')
+            time.sleep(WORK_TIME * 60 / 5)
+            print(emoji.emojize(':tomato:',use_aliases=True)*(count+1))
         done += 1
 
         if times == done:
-            get_attention()
+            bell()
             print("You've done!")
             break
 
-        get_attention()
+        bell()
         print ('5 min break time...')
         for count in range(5):
-            time.sleep(60)
-            print(emoji.emojize(':zzz:',use_aliases=True),'\a')
+            time.sleep(BREAK_TIME * 60 / 5)
+            print(emoji.emojize(':zzz:',use_aliases=True)*(count+1))
 
 if __name__ == '__main__':
     try:
