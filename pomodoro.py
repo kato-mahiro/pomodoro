@@ -35,7 +35,7 @@ def pomodoro(times):
         print ('Focus on your task',done+1, '/', times,'...')
         for count in range(5):
             time.sleep(WORK_TIME * 60 / 5)
-            print(emoji.emojize(':tomato:',use_aliases=True),'\a')
+            print(emoji.emojize(':tomato:',use_aliases=True)*(count+1))
         done += 1
 
         if times == done:
@@ -46,8 +46,8 @@ def pomodoro(times):
         bell()
         print ('5 min break time...')
         for count in range(5):
-            time.sleep(BREAK_TIME * 60)
-            print(emoji.emojize(':zzz:',use_aliases=True),'\a')
+            time.sleep(BREAK_TIME * 60 / 5)
+            print(emoji.emojize(':zzz:',use_aliases=True)*(count+1))
 
 if __name__ == '__main__':
     try:
