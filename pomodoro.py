@@ -20,7 +20,7 @@ def get_attention():
         time.sleep(0.3)
 
 def bell():
-    filename = 'User/katomasahiro/pomodoro/bell.mp3'
+    filename = '/Users/katomasahiro/pomodoro/bell.mp3'
     pygame.mixer.init()
     pygame.mixer.music.load(filename)
     mp3_length = mp3(filename).info.length
@@ -29,6 +29,7 @@ def bell():
     pygame.mixer.music.stop()
 
 def pomodoro(times):
+    bell()
     done = 0
     while(True):
         input('Are you ready?? Press any key')
