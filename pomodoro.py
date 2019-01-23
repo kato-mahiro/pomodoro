@@ -9,33 +9,31 @@ args = sys.argv
 def get_args(string = '-4'):
     return abs(int(string))
 
-def get_focus():
+def get_attention():
     print('\a')
-    for i in range(3):
-        print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-        time.sleep(1)
+    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    time.sleep(1)
 
 def pomodoro(times):
     done = 0
     while(True):
+        get_attention()
         print ('Focus on your task',done+1, '/', times,'...')
         for count in range(5):
-            time.sleep(1)
+            time.sleep(300)
             print(emoji.emojize(':tomato:',use_aliases=True))
         done += 1
 
         if times == done:
+            get_attention()
             print("You've done!")
             break
 
-        get_focus()
-
+        get_attention()
         print ('5 min break time...')
         for count in range(5):
-            time.sleep(1)
+            time.sleep(60)
             print(emoji.emojize(':zzz:',use_aliases=True))
-
-        get_focus()
 
 if __name__ == '__main__':
     try:
@@ -44,4 +42,3 @@ if __name__ == '__main__':
         times = get_args()
 
     pomodoro(times)
-
